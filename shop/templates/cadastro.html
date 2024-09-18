@@ -1,0 +1,35 @@
+{% extends 'base.html '%}
+
+{%block titulo%}
+Formulario
+{%endblock titulo%}
+
+{%block conteudo%}
+<section class="text-center">
+    <div class="container">
+        <img src="https://cdn-icons-png.flaticon.com/512/5087/5087579.png" style="width: 200px;" alt="login"
+            class="mb-4">
+        <h1 class="h3 mb-3 font-weight-normal">Por favor, crie sua conta</h1>
+        <form method="POST" class="form-cadastro" style="color: whitesmoke;">
+            {{form.csrf_token()}}
+            {{form.usuario.label()}}
+            {{form.usuario(class="form-control", placeholder="informe o nome do Usuario")}}
+
+            {{form.email.label()}}
+            {{form.email(class="form-control", placeholder="informe o E-mail")}}
+
+            {{form.senha1.label()}}
+            {{form.senha1(class="form-control", placeholder="Informe a Senha")}}
+
+            {{form.senha2.label()}}
+            {{form.senha2(class="form-control", placeholder="Confirme a Senha")}}
+
+            <div class="d-grid">
+                {{form.submit(class="btn btn-lg btn-success mt-3")}}
+            </div>
+
+
+        </form>
+    </div>
+</section>
+{%endblock conteudo%}

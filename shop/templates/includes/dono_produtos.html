@@ -1,0 +1,28 @@
+<div class="modal fade" id="exampleModalVenda-{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" style="color: black;" id="exampleModalLabel">{{i.nome}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <form method="post">
+                    {{ venda_form.hidden_tag() }}
+                    <h4 style="color: black;">
+                        Deseja vender o produto {{i.nome}} por R${{i.preco}} ?
+                    </h4>
+                    <h6>
+                        Clique no botão vender, para vender este produto
+                    </h6>
+                    <input id="venda_produto" name="venda_produto" type="hidden" value="{{i.nome}}">
+                    {{venda_form.submit(class="btn btn-outline-danger btn-block")}}
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
