@@ -1,0 +1,33 @@
+services:
+
+  db:
+    image: mysql:latest
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: RootPassword
+      MYSQL_USER: MainUser
+      MYSQL_PASSWORD: MainPassword
+      MYSQL_DATABASE: backoffice
+    ports:
+      - "3306:3306"
+    volumes:
+      -  mysql_volume:/var/lib/mysql
+
+  flask-app:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "5000:5000"
+    
+    depends_on:
+      - db
+    
+    environment:
+      DB_USER: MainUser
+      DB_PASSWORD: MainPassword
+      DB_HOST: db
+      DB_DATABASE: backoffice
+      DB_PORT: 3306
+volumes:
+  mysql_volume:
